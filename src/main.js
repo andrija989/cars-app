@@ -10,6 +10,7 @@ import AddCar from '@/components/AddCar'
 const routes = [
   { path:'/', redirect:'/cars'},
   { path:'/cars', component:AppCars},
+  { path:'/edit/:id',component:AddCar},
   { path:'/add', component:AddCar}
 ]
 

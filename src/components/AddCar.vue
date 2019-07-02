@@ -1,7 +1,7 @@
 <template>
     <div>
-        <h3>Add New Car</h3>
-        <form @submit.prevent="handleAdd">
+        
+        <form @submit.prevent="handleForm">
             <div>
                 <label for="brand">Brand</label>
                 <input type="text" id="brand" v-model="newCar.brand" required minlength="3">
@@ -63,12 +63,18 @@ export default {
                 numberOfDoors: 0,
             },
             years : [1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019],
-            
+            id: ''
         }
     },
     methods:{
-        handleAdd() {
+        handleForm() {
+            if(this.id) {
+                carsService.edit(this.id,this.newCar)
+                this.$router.push('/cars')
+                return
+            }
             carsService.add(this.newCar)
+            this.$router.push('/cars')
         },
 
         reset() {
@@ -85,6 +91,20 @@ export default {
 
         preview() {
             alert(JSON.stringify(this.newCar, null, 4))
+        },
+
+    },
+    created() {
+        this.id = this.$router.currentRoute.params.id;
+        if(this.id) {
+            carsService.getSingleCar(this.id)
+            .then(response => {
+                console.log(response)
+                this.newCar = response.data
+            })
+            .catch(e => {
+                console.log(e)
+            })
         }
     }
 }

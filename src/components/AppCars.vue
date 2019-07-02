@@ -3,6 +3,7 @@
         <ul>
             <li v-for="(car,index) in cars" :key="index">
                 {{car}}
+                <router-link :to="routeToEdit(car)">Edit</router-link>
             </li>
         </ul>
     </div>
@@ -28,6 +29,12 @@ export default {
         })
       
     },
+
+    methods: {
+       routeToEdit (car) {
+            return `/edit/${car.id}`
+    }
+  }
 }
 </script>
 

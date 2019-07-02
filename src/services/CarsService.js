@@ -17,6 +17,19 @@ export default class CarsService {
             console.log(e)
         })
     }
+    getSingleCar(id) {
+        return axios.get(`cars/${id}`)
+    }
+
+    edit(id,newCar) {
+        axios.put(`cars/${id}`,newCar)
+        .then(response => {
+            console.log(response)
+        })
+        .catch(e => {
+            console.log(e)
+        })
+    }
 }
 
 export const carsService = new CarsService()
