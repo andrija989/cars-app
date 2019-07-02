@@ -4,14 +4,14 @@
         <form @submit.prevent="handleAdd">
             <div>
                 <label for="brand">Brand</label>
-                <input type="text" id="brand" v-model="newCar.brand">
+                <input type="text" id="brand" v-model="newCar.brand" required minlength="3">
             </div>
             <div>
                 <label for="model">Model</label>
-                <input type="text" id="model" v-model="newCar.model">
+                <input type="text" id="model" v-model="newCar.model" required minlength="3">
             </div>
             <div>
-                <select id="year" v-model="newCar.year">
+                <select id="year" v-model="newCar.year" required>
                     <option v-for="(year,index) in years" :key="index" :value="year">
                         {{year}}
                     </option>
@@ -23,11 +23,11 @@
             </div>
             <div>
                 <label for="numberOfDoors">Number of doors</label>
-                <input type="number" id="numberOfDoors" v-model="newCar.numberOfDoors">
+                <input type="number" id="numberOfDoors" v-model="newCar.numberOfDoors" required>
             </div>
             <div>
                 <label for="isAutomatic">Automatic or not</label>
-                <input type="checkbox" id="isAutomatic" v-model="newCar.isAutomatic">
+                <input type="checkbox" id="isAutomatic" v-model="newCar.isAutomatic" >
             </div>
             <div>
                 <h5>Engine Type</h5>
