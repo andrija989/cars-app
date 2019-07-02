@@ -4,6 +4,7 @@
             <li v-for="(car,index) in cars" :key="index">
                 {{car}}
                 <router-link :to="routeToEdit(car)">Edit</router-link>
+                <button @click="handleDelete(car.id)">Delete</button>
             </li>
         </ul>
     </div>
@@ -33,7 +34,12 @@ export default {
     methods: {
        routeToEdit (car) {
             return `/edit/${car.id}`
+    },
+         handleDelete(id) {
+            carsService.delete(id)
+        
     }
+  
   }
 }
 </script>
