@@ -42,6 +42,7 @@
             </div>
             <button type="submit">Confirm</button>
             <button @click="reset">Reset</button>
+            <button @click="preview">Preview</button>
         </form>
     </div>
 </template>
@@ -80,6 +81,10 @@ export default {
                 engine:'',
                 numberOfDoors: 0,
             }
+        },
+
+        preview() {
+            alert(JSON.stringify(this.newCar, null, 4))
         }
     }
 }
