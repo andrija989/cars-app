@@ -41,6 +41,7 @@
                 <input type="radio" id="hybrid" value="hybrid" v-model="newCar.engine">
             </div>
             <button type="submit">Confirm</button>
+            <button @click="reset">Reset</button>
         </form>
     </div>
 </template>
@@ -67,6 +68,18 @@ export default {
     methods:{
         handleAdd() {
             carsService.add(this.newCar)
+        },
+
+        reset() {
+            this.newCar = {
+                brand: '',
+                model: '',
+                year: 0,
+                maxSpeed: 0,
+                isAutomatic: true,
+                engine:'',
+                numberOfDoors: 0,
+            }
         }
     }
 }
