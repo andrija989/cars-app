@@ -1,7 +1,8 @@
 <template>
   <div>
     <nav>
-      <router-link to="/cars">Cars</router-link>
+      <router-link class="btn btn-primary" to="/cars">Cars</router-link>
+      <router-link class="btn btn-primary" to="/add">Add Car</router-link>
     </nav>
     <router-view />
   </div>
