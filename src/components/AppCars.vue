@@ -37,6 +37,9 @@ export default {
     },
          handleDelete(id) {
             carsService.delete(id)
+            .then(response => {
+                this.cars = this.cars.filter(car => car.id !== id)
+            })
         
     }
   
