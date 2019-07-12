@@ -3,7 +3,8 @@
     <nav>
       <router-link class="btn btn-primary" to="/cars">Cars</router-link>
       <router-link class="btn btn-primary" to="/add">Add Car</router-link>
-       <router-link class="nav-item nav-link" to="/login" v-if="!isAuthenticated">Login</router-link>
+      <router-link class="btn btn-primary" to="/register">Register</router-link>
+      <router-link class="nav-item nav-link" to="/login" v-if="!isAuthenticated">Login</router-link>
       <a href="#" class="nav-item nav-link" @click="logout" v-if="isAuthenticated">Logout</a>
     </nav>
     <router-view />

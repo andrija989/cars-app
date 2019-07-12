@@ -8,14 +8,16 @@ import AppCars from '@/components/AppCars'
 import AddCar from '@/components/AddCar'
 import Login from '@/components/contacts/Login'
 import { authService } from './services/Auth'
+import AddUser from '@/components/contacts/AddUser'
 
 
 const routes = [
   { path:'/', redirect:'/cars'},
-  { path:'/cars', component:AppCars},
-  { path:'/edit/:id',component:AddCar},
-  { path:'/add', component:AddCar},
-  { path: '/login', component: Login,name: 'login' }
+  { path:'/cars', component:AppCars, name:'cars'},
+  { path:'/edit/:id',component:AddCar, name:'edit'},
+  { path:'/add', component:AddCar, name:'add-car'},
+  { path: '/login', component: Login,name: 'login' },
+  { path: '/register',component:AddUser, name:'register'}
 ]
 
 const router = new VueRouter({
@@ -32,7 +34,7 @@ new Vue({
 
 router.beforeEach((to, from, next)=> {
     
-  if(to.name !== 'login' && !authService.isAuthenticated()) {
+  if(to.name !== 'login' && !authService.isAuthenticated() && to.name !== 'register') {
       return router.push( {name:'login'}); // reroute na login ako nije ulogovan
   }
 
