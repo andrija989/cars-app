@@ -24,7 +24,6 @@ export default {
         carsService.getAll()
             .then(response => {
             this.cars = response.data
-            
             }).catch(e => {
             console.log(e)
         })

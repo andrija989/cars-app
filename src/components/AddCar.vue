@@ -75,6 +75,9 @@ export default {
             }
             carsService.add(this.newCar)
             this.$router.push('/cars')
+            .then(response => {
+                this.cars = this.cars.filter(car => car.id !== id)
+            })
         },
 
         reset() {
