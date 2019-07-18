@@ -9,6 +9,7 @@ import AddCar from '@/components/AddCar'
 import Login from '@/components/contacts/Login'
 import { authService } from './services/Auth'
 import AddUser from '@/components/contacts/AddUser'
+import store from './store'
 
 
 const routes = [
@@ -29,7 +30,8 @@ Vue.config.productionTip = false
 
 new Vue({
   router: router,
-  render: h => h(App),
+  store,
+  render: h => h(App)
 }).$mount('#app')
 
 router.beforeEach((to, from, next)=> {
