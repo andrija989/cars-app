@@ -4,8 +4,12 @@
       <router-link class="btn btn-primary" to="/cars">Cars</router-link>
       <router-link class="btn btn-primary" to="/add">Add Car</router-link>
       <router-link class="btn btn-primary" to="/register">Register</router-link>
-      <router-link class="nav-item nav-link" to="/login" v-if="!isAuthenticated">Login</router-link>
-      <a href="#" class="nav-item nav-link" @click="logout" v-if="isAuthenticated">Logout</a>
+      <li v-if="user">
+        <button @click="logout()">Logout</button>
+      </li>
+      <li v-else>
+        <router-link to="/login">Login</router-link>
+      </li>
     </nav>
     <router-view />
   </div>
@@ -13,11 +17,13 @@
 
 <script>
 import { authService } from '@/services/Auth'
+import { mapGetters } from 'vuex'
 
 export default {
   data() {
       return {
-        isAuthenticated: authService.isAuthenticated()
+        // isAuthenticated: false,
+        
       }
     },
 
@@ -26,6 +32,12 @@ export default {
         authService.logout()
         this.isAuthenticated = false
       }
+    },
+
+    computed: {
+      ...mapGetters({
+          user:'getUser'
+        })
     }
 }
 </script>

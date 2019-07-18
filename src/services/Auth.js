@@ -10,6 +10,7 @@ export default class AuthService {
     return axios.post('http://localhost:8000/api/login', {
       email, password
     }).then(({data}) => {
+      window.localStorage.setItem('user', JSON.stringify(data.user))
       window.localStorage.setItem('loginToken', data.token)
       this.setAxiosDefaultAuthorizationHeader()
       
